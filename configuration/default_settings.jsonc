@@ -1,0 +1,5 @@
+{
+  // Optional: Specify a custom path to the Repomix executable
+  // If not specified, the extension will use the globally installed Repomix
+  "repomix_path": ""
+}

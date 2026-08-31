@@ -1,0 +1,61 @@
+{
+  "name": "repomix-mcp",
+  "display_name": "Repomix MCP",
+  "description": "Pack repositories into AI-friendly formats for comprehensive codebase analysis",
+  "version": "0.1.0",
+  "author": "FlowEngineer sandraschi",
+  "license": "MIT",
+  "homepage": "https://github.com/mlopezgez/mcp-server-repomix",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlopezgez/mcp-server-repomix"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "src/repomix_mcp/server.py",
+    "mcp_config": {
+      "command": "python",
+      "args": ["src/repomix_mcp/server.py"],
+      "env": {
+        "PYTHONPATH": "${__dirname}/src"
+      }
+    }
+  },
+  "requirements": {
+    "python": ">=3.9",
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": [
+    "fastmcp>=2.13.0,<2.14.0",
+    "pydantic>=2.0.0",
+    "repomix"
+  ],
+  "tools": [
+    {
+      "name": "pack_repository",
+      "description": "Pack a repository into an AI-friendly format using Repomix"
+    },
+    {
+      "name": "read_packed_output",
+      "description": "Read and analyze packed repository output"
+    },
+    {
+      "name": "search_packed_output",
+      "description": "Search for patterns within packed repository output"
+    },
+    {
+      "name": "list_supported_formats",
+      "description": "List supported output formats and compression options"
+    }
+  ],
+  "tags": [
+    "repository",
+    "analysis",
+    "codebase",
+    "ai-friendly",
+    "compression",
+    "search",
+    "development"
+  ]
+}

@@ -1,0 +1,37 @@
+# Rust build artifacts
+/target
+Cargo.lock
+
+# Node modules (if any development dependencies)
+node_modules/
+package-lock.json
+
+# Repomix output files
+repomix-output.xml
+repomix-output.txt
+repomix-output.md
+repomix-output.json
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+
+# Zed extension development
+*.wasm
+.cargo
+rust-toolchain.toml
+# Rust / Zed IDE — rust-analyzer may create target/ at repo root
+target/
+
+_dashboard/

@@ -1,0 +1,2 @@
+[console_scripts]
+repomix-mcp = repomix_mcp.server:main
