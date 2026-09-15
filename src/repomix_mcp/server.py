@@ -6,6 +6,7 @@ This MCP server provides tools to pack entire repositories using Repomix,
 making it easy for AI assistants to analyze and understand complete codebases.
 """
 
+import asyncio
 import os
 import subprocess
 from pathlib import Path
@@ -62,7 +63,7 @@ async def pack_repository(request: PackRepositoryRequest) -> dict[str, Any]:
     try:
         # Check if repomix is installed
         try:
-            subprocess.run(["repomix", "--version"], capture_output=True, check=True)
+            await asyncio.to_thread(subprocess.run, ["repomix", "--version"], capture_output=True, check=True)
         except (subprocess.CalledProcessError, FileNotFoundError):
             return {"success": False, "error": "Repomix is not installed. Install with: npm install -g repomix"}
 
@@ -97,8 +98,8 @@ async def pack_repository(request: PackRepositoryRequest) -> dict[str, Any]:
         if request.compress:
             cmd.append("--compress")
 
-        # Run repomix
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=os.getcwd())
+        # Run repomix (minutes on large repos — off the loop)
+        result = await asyncio.to_thread(subprocess.run, cmd, capture_output=True, text=True, cwd=os.getcwd())
 
         if result.returncode == 0:
             # Get file size
