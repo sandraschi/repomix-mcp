@@ -44,6 +44,8 @@ dependencies = [
     "pathlib>=1.0.0",
     "ruff>=0.16.0,<0.17",
     "prefab-ui>=0.14.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
 ]
 
 [project.urls]
