@@ -62,7 +62,7 @@ async def pack_repository(request: PackRepositoryRequest) -> Dict[str, Any]:
     try:
         # Check if repomix is installed
         try:
-            subprocess.run(["repomix", "--version"], capture_output=True, check=True)
+            await asyncio.to_thread(subprocess.run, ["repomix", "--version"], capture_output=True, check=True)
         except (subprocess.CalledProcessError, FileNotFoundError):
             return {
                 "success": False,
@@ -104,7 +104,7 @@ async def pack_repository(request: PackRepositoryRequest) -> Dict[str, Any]:
             cmd.append("--compress")
 
         # Run repomix
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=os.getcwd())
+        result = await asyncio.to_thread(subprocess.run, cmd, capture_output=True, text=True, cwd=os.getcwd())
 
         if result.returncode == 0:
             # Get file size
