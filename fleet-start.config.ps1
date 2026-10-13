@@ -1,4 +1,4 @@
-﻿# Per-repo fleet start config for repomix-mcp
+# Per-repo fleet start config for repomix-mcp
 # Edit ports/backend target here - start.ps1 is fleet-standard.
 @{
     Name         = 'repomix-mcp'
@@ -10,6 +10,7 @@
         Kind          = 'uvicorn'
         UvicornTarget = 'repomix_mcp.server:app'
         SyncExtras    = @('dev')
+        SyncOnStart  = $true
         Env           = @{ WEB_PORT = '11207' }
     }
     Frontend = @{
